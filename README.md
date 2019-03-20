@@ -2,9 +2,13 @@
 Web App Coursework
 
 TASKS
+
 Chris - User delete and edit UC13
+
 Sam - Crypto machine create and edit
+
 Matt- User search and crypto display
+
 Roan - User register
 
 Roles

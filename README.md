@@ -1,6 +1,7 @@
 # cryptoWeb
 Web App Coursework
 
+
 TASKS
 
 Chris - User delete and edit UC13
@@ -11,13 +12,21 @@ Matt- User search and crypto display
 
 Roan - User register
 
+
 Roles
+
 Matt - Team Leader, Coding standards compliance
+
 Sam - Tester
+
 Chris - Database Admin
+
 Roan - Documentor(DOCBLOCK), Scrum Master
+
 we all document our own code
+
 MUST BE PSR-1 Compliant
+
 
 Checklist
 -Object Orientated Paradigm

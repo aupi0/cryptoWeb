@@ -1,9 +1,13 @@
+-- noinspection SqlDialectInspectionForFile
+
+-- noinspection SqlNoDataSourceInspectionForFile
+
 SET FOREIGN_KEY_CHECKS=0;
 DROP DATABASE IF EXISTS cryptoshow_db;
 CREATE DATABASE cryptoshow_db;
 USE cryptoshow_db;
 
-GRANT SELECT, INSERT, UPDATE, DELETE on cryptoshow_db.* TO cryptoshowuser@localhost IDENTIFIED BY 'cryptoshowpass';
+GRANT SELECT, INSERT, UPDATE, DELETE on cryptoshow_db.* TO 'cryptoshowuser'@'%' IDENTIFIED BY 'cryptoshowpass';
 
 -- ----------------------------
 -- Table structure for `registered_user`

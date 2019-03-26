@@ -37,12 +37,18 @@ class DisplayCryptoListModel
         $this->database_handle->safeQuery($sql_query_string, $sql_query_parameters);
         $number_of_machines = $this->database_handle->countRows();
 
+        //finds id of current user within session
+        $session_value = $_SESSION['user-id'];
         if ($number_of_machines > 0)
         {
             while ($row = $this->database_handle->safeFetchArray())
             {
-                $crypto_machine_name = $row['crypto_machine_name'];
-                $crypto_machines_list[$crypto_machine_name] = $crypto_machine_name;
+                //only shows machines that are visible or added by current user
+                if ($row['crypto_machine_record_visible'] == 1 OR $row['fk_user_id'] == $session_value)
+                {
+                    $crypto_machine_name = $row['crypto_machine_name'];
+                    $crypto_machines_list[$crypto_machine_name] = $crypto_machine_name;
+                }
             }
         }
         $this->crypto_machines = $crypto_machines_list;

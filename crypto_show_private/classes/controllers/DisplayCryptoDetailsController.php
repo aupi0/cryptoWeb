@@ -41,8 +41,8 @@ class DisplayCryptoDetailsController extends ControllerAbstract
         $model->setDatabaseHandle($database);
         $model->getDatabaseConnectionResult();
 
-        $model->setPetName($validated_crypto_machine);
-        $model->retrievePetDetails();
+        $model->setCryptoMachine($validated_crypto_machine);
+        $model->retrieveCryptoDetails();
         $crypto_details = $model->getCryptoDetails();
         return $crypto_details;
     }
@@ -50,7 +50,7 @@ class DisplayCryptoDetailsController extends ControllerAbstract
     private function createView($crypto_details)
     {
         $view = Factory::buildObject('DisplayView');
-        $view->setPetDetails($crypto_details);
+        $view->setCryptoDetails($crypto_details);
         $view->createOutputPage();
         $html_output = $view->getHtmlOutput();
 

@@ -49,6 +49,7 @@ class IndexView extends WebPageTemplateView
         $info_text .= 'Please select an action from the menu above';
         $page_heading = APP_NAME . ' demonstration';
 
+        //Added Form
         $this->html_page_content = <<< HTMLFORM
 <h2>$page_heading</h2>
 <p>$info_text</p>

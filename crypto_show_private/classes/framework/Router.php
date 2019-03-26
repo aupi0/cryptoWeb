@@ -56,6 +56,7 @@ class Router
     {
         $feature_exists = false;
         // map the passed module name to an internal application feature name
+        //added display crypto detials to array
         $features = array(
             'index' => 'landing-page',
             'user_register' => 'user-register-form',
@@ -63,6 +64,7 @@ class Router
             'user_login' => 'user-login-form',
             'process_login' => 'user-login-process',
             'user_logout' => 'user-logout-process',
+            'display_crypto_details' => 'display-crypto-details',
         );
 
         if (array_key_exists($this->feature_in, $features))
@@ -97,6 +99,7 @@ class Router
                 $controller = Factory::buildObject('UserLogoutProcessController');
                 break;
             case 'display-crypto-details':
+                //Added this case
                 $controller = Factory::buildObject('DisplayCryptoDetailsController');
                 break;
             case 'feature-error':

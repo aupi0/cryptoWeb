@@ -92,7 +92,7 @@ HTML;
     $menu_option_buttons .= '<button name="feature" value="user_login">Login</button>';
    }
    $menu_option_buttons .= '&nbsp;&nbsp;';
-   $menu_option_buttons .= '<button name="feature" value="display_Crypto_details">Display Crypto Details</button>';
+   $menu_option_buttons .= '<button name="feature" value="display_crypto_details">Display Crypto Details</button>';
 
    $form_target_file = APP_ROOT_PATH;
    $form_method = 'post';

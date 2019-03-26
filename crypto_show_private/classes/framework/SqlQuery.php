@@ -18,7 +18,7 @@
   public static function queryGetCryptoMachineNames()
   {
    $sql_query_string  = 'SELECT Crypto_name';
-   $sql_query_string .= ' FROM Crypto';
+   $sql_query_string .= ' FROM Crypto_machine';
    return $sql_query_string;
   }
 
@@ -62,14 +62,12 @@
 
   public static function queryGetCryptoMachineDetails()
   {
-   $sql_query_string  = 'SELECT Crypto.Crypto_index, Crypto_name, owner_initials, Crypto_type,';
-   $sql_query_string .= ' Crypto_sex, Crypto_dob, Crypto_is_alive, Crypto_do_death,';
-   $sql_query_string .= ' Crypto_pic_source, Crypto_description';
-   $sql_query_string .= ' FROM Crypto, Cryptopics';
-   $sql_query_string .= ' WHERE Crypto_name = :Cryptoname';
-   $sql_query_string .= ' AND Crypto.Crypto_index = Cryptopics.Crypto_index';
+   $sql_query_string  = 'SELECT crypto_machine.crypto_machine_id, Crypto_machine_name, fk_user_id, Crypto_machine_image_name, crypto_machine_record_visible';
+   $sql_query_string .= ' FROM Crypto';
+   $sql_query_string .= ' WHERE Crypto_machine_name = :Cryptoname';
    $sql_query_string .= ' LIMIT 1';
    return $sql_query_string;
+      //insert into crypto_machine set crypto_machine_id = 1, fk_user_id = 2, crypto_machine_name = 'mad machine', crypto_machine_image_name = 'image.jpg', crypto_machine_record_visible = 1;
   }
 
   public static function queryLogErrorMessage()

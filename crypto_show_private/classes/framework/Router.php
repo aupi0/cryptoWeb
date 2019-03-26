@@ -82,6 +82,7 @@ class Router
 
     public function selectController()
     {
+        echo "feature = $this->feature";
         switch ($this->feature)
         {
             case 'user-register-form':

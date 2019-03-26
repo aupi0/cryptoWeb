@@ -28,7 +28,7 @@ class DisplayCryptoDetailsController extends ControllerAbstract
         $validate = Factory::buildObject('Validate');
         $tainted = $_POST;
 
-        $validated_crypto_machine = $validate->validateString('crypto-machine', $tainted, 3, 10);
+        $validated_crypto_machine = $validate->validateString('crypto-machine', $tainted, 3, 25);
 
         return $validated_crypto_machine;
     }

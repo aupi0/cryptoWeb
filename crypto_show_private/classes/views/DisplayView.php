@@ -69,17 +69,17 @@ NAMEERRORPAGE;
         $address = APP_ROOT_PATH;
         $crypto_name = $this->crypto_details['sanitised-crypto-machine'];
         $crypto_details = $this->crypto_details['crypto-details'];
-        $crypto_machine_id = $crypto_details['machine_id'];
-        $user_id = $crypto_details['user_id'];
-        $crypto_image_source = PETPICS_PATH . $crypto_details['crypto_pic_source'];
+        $crypto_machine_id = $crypto_details['crypto_machine_id'];
+        $user_id = $crypto_details['fk_user_id'];
+        $crypto_image_name = $crypto_details['crypto_machine_image_name'];
         $this->html_page_content = <<< VIEWCRYPTODETAILS
 <div id="lg-form-container">
 <h2>Crypto Machine details for $crypto_name</h2>
 <table border="1">
 <tr><td>Crypto Machine ID :</td><td>$crypto_machine_id</td></tr>
+<tr><td>Crypto Machine Name :</td><td>$crypto_name</td></tr>
 <tr><td>User ID :</td><td>$user_id</td></tr>
-<tr><td>Picture source :</td><td>$crypto_image_source/td></tr>
-<!--<img src="$crypto_image_source" alt="pet's picture" title="pet's picture" /> -->
+<tr><td>Picture Name :</td><td>$crypto_image_name</td></tr>
 </td>
 </tr>
 </table>

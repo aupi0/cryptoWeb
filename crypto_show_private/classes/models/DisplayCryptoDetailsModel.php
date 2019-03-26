@@ -47,7 +47,7 @@ class DisplayCryptoDetailsModel
     {
         $sanitised_crypto_machine = $this->sanitised_crypto_machine;
         $sql_query_string = SqlQuery::queryGetCryptoMachineDetails();
-        $sql_query_parameters = array(':cryptoMachine' => $sanitised_crypto_machine);
+        $sql_query_parameters = array(':Cryptoname' => $sanitised_crypto_machine);
         $query_result = $this->database_handle->safeQuery($sql_query_string, $sql_query_parameters);
         $crypto_count = $this->database_handle->countRows();
         if ($crypto_count == 0)

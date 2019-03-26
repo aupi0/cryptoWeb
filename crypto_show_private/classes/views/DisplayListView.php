@@ -48,7 +48,7 @@ class DisplayListView extends WebPageTemplateView
 <h2>Select a Crypto Machine</h2>
 <h3>Please select a Cryptographic Machine from the list </h3>
 <form method="post" action="$address">
-<select name="pet-name">
+<select name="crypto-machine">
 $crypto_machine_option_list
 </select>
 <p class="text_right">

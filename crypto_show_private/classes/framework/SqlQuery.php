@@ -17,7 +17,7 @@
 
   public static function queryGetCryptoMachineNames()
   {
-   $sql_query_string  = 'SELECT crypto_machine_name';
+   $sql_query_string  = 'SELECT crypto_machine_name, fk_user_id, crypto_machine_record_visible';
    $sql_query_string .= ' FROM crypto_machine';
    return $sql_query_string;
   }
@@ -45,6 +45,15 @@
   public static function queryAuthenticateUser()
   {
    $sql_query_string  = 'SELECT user_hashed_password';
+   $sql_query_string .= ' FROM registered_user';
+   $sql_query_string .= ' WHERE user_nickname = :usernickname';
+   $sql_query_string .= ' LIMIT 1';
+   return $sql_query_string;
+  }
+
+  public static function queryFetchUserId()
+  {
+   $sql_query_string  = 'SELECT user_id';
    $sql_query_string .= ' FROM registered_user';
    $sql_query_string .= ' WHERE user_nickname = :usernickname';
    $sql_query_string .= ' LIMIT 1';

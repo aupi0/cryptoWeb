@@ -8,18 +8,19 @@
 
 class DisplayView extends WebPageTemplateView
 {
+    private $crypto_details;
 
     public function __construct()
     {
-        parent::__construct();
+        $this->crypto_details = array();
     }
 
-    public function __destruct(){}
+    public function __destruct() {}
 
-    public function createForm()
+    public function createOutputPage()
     {
         $this->setPageTitle();
-        $this->createPageBody();
+        $this->createRelevantOutput();
         $this->createWebPage();
     }
 
@@ -28,36 +29,61 @@ class DisplayView extends WebPageTemplateView
         return $this->html_page_output;
     }
 
-    private function setPageTitle()
+    public function setCryptoDetails(array $crypto_details)
     {
-        $this->page_title = 'PetShow Index Page';
+        $this->crypto_details = $crypto_details;
     }
 
-    private function createPageBody()
+    private function setPageTitle()
     {
-        //added Address
-        $address = APP_ROOT_PATH;
-        $year = date('Y');
-        $info_text = '';
-        $info_text .= 'Please select a Cryptographic Machine from the list ';
-        $info_text .= '<br />';
-        $page_heading = APP_NAME . ' demonstration';
+        $this->page_title = 'Display Crypto Machine details';
+    }
 
-        //Added Form
-        $this->html_page_content = <<< HTMLFORM
-<h2>$page_heading</h2>
-<p>$info_text</p>
-<form action="$address" method="post">
-<p class="curr_page"></p>
-<fieldset>
-<legend>Select option</legend>
-<br />
-<button name="feature" value="show_crypto_machines">Show Crypto Machines</button>
-<br />
-<br />
-<button name="feature" value="display_machine_details">Display Machine Details</button>
-</fieldset>
-</form>
-HTMLFORM;
+    private function createRelevantOutput()
+    {
+        if (isset($this->crypto_details['sanitised-crypto-machine']))
+        {
+            if (!$this->crypto_details['sanitised-crypto-machine'])
+            {
+                $this->createErrorMessage();
+            }
+            else
+            {
+                $this->displayCryptoDetails();
+            }
+        }
+    }
+
+    private function createErrorMessage()
+    {
+        $this->html_page_content = <<< NAMEERRORPAGE
+<div id="lg-form-container">
+<p class="error">Ooops - there was a problem with the Crypto Machine name you selected/entered</p>
+</div>
+NAMEERRORPAGE;
+    }
+
+    private function displayCryptoDetails()
+    {
+        $stock_values = '';
+        $address = APP_ROOT_PATH;
+        $crypto_name = $this->crypto_details['sanitised-crypto-machine'];
+        $crypto_details = $this->crypto_details['crypto-details'];
+        $crypto_machine_id = $crypto_details['machine_id'];
+        $user_id = $crypto_details['user_id'];
+        $crypto_image_source = PETPICS_PATH . $crypto_details['crypto_pic_source'];
+        $this->html_page_content = <<< VIEWCRYPTODETAILS
+<div id="lg-form-container">
+<h2>Crypto Machine details for $crypto_name</h2>
+<table border="1">
+<tr><td>Crypto Machine ID :</td><td>$crypto_machine_id</td></tr>
+<tr><td>User ID :</td><td>$user_id</td></tr>
+<tr><td>Picture source :</td><td>$crypto_image_source/td></tr>
+<!--<img src="$crypto_image_source" alt="pet's picture" title="pet's picture" /> -->
+</td>
+</tr>
+</table>
+</div>
+VIEWCRYPTODETAILS;
     }
 }

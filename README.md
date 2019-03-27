@@ -2,7 +2,7 @@
 Web App Coursework
 
 
-##TASKS
+## TASKS
 
 * Chris - User delete and edit UC13
 
@@ -13,7 +13,7 @@ Web App Coursework
 * Roan - User register
 
 
-##Roles
+## Roles
 
 * Matt - Team Leader, Coding standards compliance
 

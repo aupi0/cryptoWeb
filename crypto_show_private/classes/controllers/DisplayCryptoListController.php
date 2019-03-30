@@ -1,9 +1,8 @@
 <?php
-/**
+/** DisplayCryptoListController.php
+ *
  * Created by PhpStorm.
- * User: d1da
- * Date: 26/03/19
- * Time: 06:03
+ * @author - Sam, Matt, Chris and Roan
  */
 
 class DisplayCryptoListController extends ControllerAbstract
@@ -13,11 +12,9 @@ class DisplayCryptoListController extends ControllerAbstract
         $database = Factory::createDatabaseWrapper();
         $model = Factory::buildObject('DisplayCryptoListModel');
         $view = Factory::buildObject('DisplayListView');
-
         $model->setDatabaseHandle($database);
         $model->createCryptoList();
         $crypto_machine = $model->getCryptoMachines();
-
         $view->setCryptoMachine($crypto_machine);
         $view->createForm();
         $this->html_output = $view->getHtmlOutput();

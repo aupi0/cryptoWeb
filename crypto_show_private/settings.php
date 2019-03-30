@@ -36,8 +36,7 @@ define ('CSS_FILE_NAME', $css_file_name);
 function getPdoDatabaseConnectionDetails()
 {
     $rdbms = 'mysql';
-    $host = '172.18.0.2';
-    //$host = 'localhost';
+    $host = 'localhost';
     $port = '3306';
     $charset = 'utf8mb4';
     $db_name = 'cryptoshow_db';

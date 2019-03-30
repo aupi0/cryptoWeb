@@ -27,11 +27,16 @@ CREATE TABLE `registered_user` (
 -- ----------------------------
 -- Table structure for `crypto_machine`
 -- ----------------------------
+
+-- Added columns to the table in order to store more crypto device data
 DROP TABLE IF EXISTS `crypto_machine`;
 CREATE TABLE `crypto_machine` (
   `crypto_machine_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fk_user_id` int(10) unsigned NOT NULL,
   `crypto_machine_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `crypto_machine_model` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `crypto_machine_country_of_origin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `crypto_machine_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `crypto_machine_image_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `crypto_machine_record_visible` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`crypto_machine_id`),

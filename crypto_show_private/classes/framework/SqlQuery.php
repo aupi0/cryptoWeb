@@ -15,12 +15,11 @@
 
   public function __destruct(){}
 
-  //updated statement to be correct and added user id and visible for UC15
   public static function queryGetCryptoMachineNames()
   {
-   $sql_query_string  = 'SELECT crypto_machine_name, fk_user_id, crypto_machine_record_visible';
-   $sql_query_string .= ' FROM crypto_machine';
-   return $sql_query_string;
+         $sql_query_string  = 'SELECT crypto_machine_name, fk_user_id, crypto_machine_record_visible';
+         $sql_query_string .= ' FROM crypto_machine';
+         return $sql_query_string;
   }
 
   public static function queryGetRegisteredUserNames()
@@ -43,6 +42,7 @@
    return $sql_query_string;
   }
 
+
   public static function queryAuthenticateUser()
   {
    $sql_query_string  = 'SELECT user_hashed_password';
@@ -53,13 +53,22 @@
   }
 
   public static function queryFetchUserId()
-  {
-   $sql_query_string  = 'SELECT user_id';
-   $sql_query_string .= ' FROM registered_user';
-   $sql_query_string .= ' WHERE user_nickname = :usernickname';
-   $sql_query_string .= ' LIMIT 1';
-   return $sql_query_string;
-  }
+     {
+         $sql_query_string  = 'SELECT user_id';
+         $sql_query_string .= ' FROM registered_user';
+         $sql_query_string .= ' WHERE user_nickname = :usernickname';
+         $sql_query_string .= ' LIMIT 1';
+         return $sql_query_string;
+     }
+
+     public static function queryFetchMachineId()
+     {
+         $sql_query_string  = 'SELECT crypto_machine_id';
+         $sql_query_string .= ' FROM crypto_machine';
+         $sql_query_string .= ' WHERE crypto_machine_name = :cryptoname';
+         $sql_query_string .= ' LIMIT 1';
+         return $sql_query_string;
+     }
 
   public static function queryFetchUserDetails()
   {
@@ -70,37 +79,50 @@
    return $sql_query_string;
   }
 
-  //Fixed Statement
   public static function queryGetCryptoMachineDetails()
   {
-   $sql_query_string  = 'SELECT crypto_machine.crypto_machine_id, crypto_machine_name, fk_user_id, crypto_machine_image_name, crypto_machine_record_visible';
-   $sql_query_string .= ' FROM crypto_machine';
-   $sql_query_string .= ' WHERE crypto_machine_name = :Cryptoname';
-   $sql_query_string .= ' LIMIT 1';
-   return $sql_query_string;
-      //insert into crypto_machine set crypto_machine_id = 1, fk_user_id = 2, crypto_machine_name = 'mad machine', crypto_machine_image_name = 'image.jpg', crypto_machine_record_visible = 1;
+      $sql_query_string  = 'SELECT crypto_machine.crypto_machine_id, crypto_machine_name, fk_user_id, crypto_machine_model, crypto_machine_country_of_origin, crypto_machine_description, crypto_machine_image_name, crypto_machine_record_visible';
+      $sql_query_string .= ' FROM crypto_machine';
+      $sql_query_string .= ' WHERE crypto_machine_name = :cryptoname';
+      $sql_query_string .= ' LIMIT 1';
+      return $sql_query_string;
   }
 
-  //Added update query for UC13
+  public static function queryNewCryptoMachineDetails()
+     {
+         $sql_query_string  = 'INSERT INTO crypto_machine';
+         $sql_query_string .= ' SET';
+         $sql_query_string .= ' fk_user_id = :userid,';
+         $sql_query_string .= ' crypto_machine_name = :cryptoname,';
+         $sql_query_string .= ' crypto_machine_model = :cryptomodel,';
+         $sql_query_string .= ' crypto_machine_country_of_origin = :cryptocountry,';
+         $sql_query_string .= ' crypto_machine_description = :cryptodesc,';
+         $sql_query_string .= ' crypto_machine_image_name = :cryptoimageName,';
+         $sql_query_string .= ' crypto_machine_record_visible = :cryptovisible';
+         return $sql_query_string;
+     }
+
+
   public static function queryUpdateCryptoMachineDetails()
   {
-   $sql_query_string  = 'UPDATE crypto_machine';
-   $sql_query_string .= ' SET';
-   $sql_query_string .= ' crypto_machine_name = :cryptoname';
-   $sql_query_string .= ' crypto_machine_image_name = :cryptoimageName';
-   $sql_query_string .= ' crypto_machine_record_visible = :cryptovisible';
-   $sql_query_string .= ' WHERE crypto_machine_id = :cryptomachineid';
-   return $sql_query_string;
+         $sql_query_string  = 'UPDATE crypto_machine';
+         $sql_query_string .= ' SET';
+         $sql_query_string .= ' crypto_machine_name = :cryptoname,';
+         $sql_query_string .= ' crypto_machine_model = :cryptomodel,';
+         $sql_query_string .= ' crypto_machine_country_of_origin = :cryptocountry,';
+         $sql_query_string .= ' crypto_machine_description = :cryptodesc,';
+         $sql_query_string .= ' crypto_machine_image_name = :cryptoimageName,';
+         $sql_query_string .= ' crypto_machine_record_visible = :cryptovisible';
+         $sql_query_string .= ' WHERE crypto_machine_id = :cryptomachineid';
+         return $sql_query_string;
   }
 
-  //Added delete query fro UC13
   public static function queryDeleteCryptoMachineDetails()
   {
-   $sql_query_string  = 'DELETE FROM crypto_machine';
-   $sql_query_string .= ' WHERE crypto_machine_id = :cryptomachineid';
-   return $sql_query_string;
+         $sql_query_string  = 'DELETE FROM crypto_machine';
+         $sql_query_string .= ' WHERE crypto_machine_id = :cryptomachineid';
+         return $sql_query_string;
   }
-
 
   public static function queryLogErrorMessage()
   {

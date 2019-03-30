@@ -14,7 +14,6 @@ class Router
     private $feature;
     private $html_output;
     private $output;
-
     public function __construct()
     {
         $this->feature_in = '';
@@ -22,9 +21,7 @@ class Router
         $this->output = '';
         $this->html_output = '';
     }
-
     public function __destruct(){}
-
     public function routing()
     {
         $this->setFeatureName();
@@ -32,12 +29,10 @@ class Router
         $this->selectController();
         $this->processOutput();
     }
-
     public function getHtmlOutput()
     {
         return $this->html_output;
     }
-
     private function setFeatureName()
     {
         if (isset($_POST['feature']))
@@ -48,15 +43,13 @@ class Router
         {
             $feature_in = 'index';
         }
-
         $this->feature_in = $feature_in;
     }
-
     private function mapFeatureName()
     {
         $feature_exists = false;
         // map the passed module name to an internal application feature name
-        //added display crypto details and crypto list to array
+        //added display crypto detials to array
         $features = array(
             'index' => 'landing-page',
             'user_register' => 'user-register-form',
@@ -66,8 +59,11 @@ class Router
             'user_logout' => 'user-logout-process',
             'display_crypto_list' => 'display-crypto-list',
             'display_crypto_details' => 'display-crypto-details',
+            'crypto_machine_create' => 'crypto-machine-create',
+            'crypto_machine_edit' => 'crypto-machine-edit',
+            'crypto_machine_create_process' => 'crypto-machine-create-process',
+            'crypto_machine_edit_process' => 'crypto-machine-edit-process'
         );
-
         if (array_key_exists($this->feature_in, $features))
         {
             $this->feature = $features[$this->feature_in];
@@ -79,10 +75,8 @@ class Router
         }
         return $feature_exists;
     }
-
     public function selectController()
     {
-        echo "feature = $this->feature";
         switch ($this->feature)
         {
             case 'user-register-form':
@@ -100,6 +94,18 @@ class Router
             case 'user-logout-process':
                 $controller = Factory::buildObject('UserLogoutProcessController');
                 break;
+            case 'crypto-machine-create':
+                $controller = Factory::buildObject('CryptoMachineCreateFormController');
+                break;
+            case 'crypto-machine-edit':
+                $controller = Factory::buildObject('CryptoMachineEditFormController');
+                break;
+            case 'crypto-machine-create-process':
+                $controller = Factory::buildObject('CryptoMachineCreateProcessController');
+                break;
+            case 'crypto-machine-edit-process':
+                $controller = Factory::buildObject('CryptoMachineEditProcessController');
+                break;
             case 'display-crypto-list':
                 //added this case
                 $controller = Factory::buildObject('DisplayCryptoListController');
@@ -114,13 +120,12 @@ class Router
                 break;
             case 'landing-page':
             default:
-            $controller = Factory::buildObject('IndexController');
+                $controller = Factory::buildObject('IndexController');
                 break;
         }
         $controller->createHtmlOutput();
         $this->output = $controller->getHtmlOutput();
     }
-
     private function processOutput()
     {
         $process_output = Factory::buildObject('ProcessOutput');

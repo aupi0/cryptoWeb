@@ -1,34 +1,28 @@
 <?php
-/**
+/** DisplayCryptoListModel.php
+ *
  * Created by PhpStorm.
- * User: d1da
- * Date: 26/03/19
- * Time: 06:34
+ * @author - Sam, Matt, Chris and Roan
  */
 
 class DisplayCryptoListModel
 {
     private $crypto_machines;
     private $database_handle;
-
     public function __construct()
     {
         $this->crypto_machines = [];
         $this->database_handle = null;
     }
-
     public function __destruct(){}
-
     public function setDatabaseHandle($obj_database_handle)
     {
         $this->database_handle = $obj_database_handle;
     }
-
     public function getCryptoMachines()
     {
         return $this->crypto_machines;
     }
-
     public function createCryptoList()
     {
         $crypto_machines_list = array();
@@ -36,7 +30,6 @@ class DisplayCryptoListModel
         $sql_query_parameters = array();
         $this->database_handle->safeQuery($sql_query_string, $sql_query_parameters);
         $number_of_machines = $this->database_handle->countRows();
-
         //finds id of current user within session
         $session_value = $_SESSION['user-id'];
         if ($number_of_machines > 0)

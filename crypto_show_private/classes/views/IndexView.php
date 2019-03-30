@@ -14,26 +14,21 @@ class IndexView extends WebPageTemplateView
     {
         parent::__construct();
     }
-
     public function __destruct(){}
-
     public function createForm()
     {
         $this->setPageTitle();
         $this->createPageBody();
         $this->createWebPage();
     }
-
     public function getHtmlOutput()
     {
         return $this->html_page_output;
     }
-
     private function setPageTitle()
     {
         $this->page_title = APP_NAME . ' Index Page';
     }
-
     private function createPageBody()
     {
         $year = date('Y');
@@ -48,7 +43,6 @@ class IndexView extends WebPageTemplateView
         $info_text .= '<br />';
         $info_text .= 'Please select an action from the menu above';
         $page_heading = APP_NAME . ' demonstration';
-
         //Added Form
         $this->html_page_content = <<< HTMLFORM
 <h2>$page_heading</h2>

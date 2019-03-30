@@ -1,44 +1,35 @@
 <?php
-/**
+/** DisplayListView.php
  * Created by PhpStorm.
- * User: d1da
- * Date: 26/03/19
- * Time: 06:04
+ * @author - Sam, Matt, Chris and Roan
  */
 
 class DisplayListView extends WebPageTemplateView
 {
     private $crypto_machine_list;
-
     public function __construct()
     {
         $this->crypto_machine_list = array();
     }
-
     public function __destruct() {}
-
     public function createForm()
     {
         $this->setPageTitle();
         $this->selectCryptoForm();
         $this->createWebPage();
     }
-
     public function getHtmlOutput()
     {
         return $this->html_page_output;
     }
-
     public function setCryptoMachine(array $crypto_machine_list)
     {
         $this->crypto_machine_list = $crypto_machine_list;
     }
-
     private function setPageTitle()
     {
-        $this->page_title = 'List pet names';
+        $this->page_title = 'List crypto machines';
     }
-
     private function selectCryptoForm()
     {
         $address = APP_ROOT_PATH;
@@ -58,7 +49,6 @@ $crypto_machine_option_list
 </div>
 HTMLFORM;
     }
-
     private function createCryptoMachineOptionList()
     {
         $crypto_machine_option_list = '';

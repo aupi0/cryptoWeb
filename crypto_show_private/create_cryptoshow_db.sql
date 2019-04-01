@@ -49,3 +49,14 @@ CREATE TABLE `cryptoshow_error_log` (
   `log_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`log_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--pics
+DROP TABLE IF EXISTS `machinepics`;
+CREATE TABLE `machinepics` (
+  `crypto_machine_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `machine_pic_source` varchar(255) DEFAULT NULL,
+  `machine_description` text,
+  PRIMARY KEY (`crypto_machine_id`)
+  KEY `crypto_machine_id` (`crypto_machine_id`),
+  CONSTRAINT `crypto_machine_id` FOREIGN KEY (`crypto_machine_id`) REFERENCES `crypto_machine` (`crypto_machine_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;

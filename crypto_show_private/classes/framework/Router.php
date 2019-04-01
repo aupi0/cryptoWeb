@@ -66,6 +66,12 @@ class Router
             'user_logout' => 'user-logout-process',
             'display_crypto_list' => 'display-crypto-list',
             'display_crypto_details' => 'display-crypto-details',
+            'process_new_machine_details' => 'add-crypto-details-process',
+            'add_crypto_details' => 'add-crypto-details',
+            'show_user_machines' => 'show-user-machines',
+            'edit_crypto_details' => 'edit-crypto-details',
+            'process_updated_machine_details' => 'process-updated-machine-details',
+            'delete_machine_details' => 'delete-machine-details',
         );
 
         if (array_key_exists($this->feature_in, $features))
@@ -107,6 +113,30 @@ class Router
             case 'display-crypto-details':
                 //Added this case
                 $controller = Factory::buildObject('DisplayCryptoDetailsController');
+                break;
+            case 'add-crypto-details':
+                //added add case
+                $controller = Factory::buildObject('AddCryptoDetailsFormController');
+                break;
+            case 'add-crypto-details-process':
+                //added add case
+                $controller = Factory::buildObject('AddCryptoDetailsProcessController');
+                break;
+            case 'show-user-machines':
+                //added for edit delete
+                $controller = Factory::buildObject('ShowUserMachinesController');
+                break;
+            case 'edit-crypto-details':
+                //added for edit delete
+                $controller = Factory::buildObject('EditUserMachinesController');
+                break;
+            case 'process-updated-machine-details':
+                //added for edit
+                $controller = Factory::buildObject('EditUserMachineProcessController');
+                break;
+            case 'delete-machine-details':
+                //added for delete
+                $controller = Factory::buildObject('DeleteMachineController');
                 break;
             case 'feature-error':
                 $controller = Factory::buildObject('ErrorController');

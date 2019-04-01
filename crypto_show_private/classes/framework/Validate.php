@@ -56,6 +56,18 @@ class Validate
         return $validated_email_to_return;
     }
 
+    //new method
+    public function validateBinary($datum_name, $tainted)
+    {
+        $validated_input = false;
+        $input_to_check = $tainted[$datum_name];
+        if ($input_to_check == 1 OR $input_to_check == "0")
+        {
+            $validated_input = $input_to_check;
+        }
+        return $validated_input;
+    }
+
     public function checkForError($cleaned)
     {
         $input_error = false;

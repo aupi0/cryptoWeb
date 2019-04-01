@@ -81,19 +81,48 @@
       //insert into crypto_machine set crypto_machine_id = 1, fk_user_id = 2, crypto_machine_name = 'mad machine', crypto_machine_image_name = 'image.jpg', crypto_machine_record_visible = 1;
   }
 
+  public static function queryFetchUserMachineCount()
+  {
+   $sql_query_string  = 'SELECT user_machine_count';
+   $sql_query_string .= ' FROM registered_user';
+   $sql_query_string .= ' WHERE user_id = :userid';
+   return $sql_query_string;
+  }
+
+  public static function queryUpdateUserMachineCount()
+  {
+   $sql_query_string  = 'Update registered_user';
+   $sql_query_string .= ' Set';
+   $sql_query_string .= ' user_machine_count = :usermachinecount';
+   $sql_query_string .= ' WHERE user_id = :userid';
+   return $sql_query_string;
+  }
+
+  //added for add machine
+  public static function queryStoreNewMachineDetails()
+  {
+   $sql_query_string  = 'INSERT INTO crypto_machine';
+   $sql_query_string .= ' SET';
+   $sql_query_string .= ' fk_user_id = :cryptouserid,';
+   $sql_query_string .= ' crypto_machine_name = :cryptoname,';
+   $sql_query_string .= ' crypto_machine_image_name = :cryptoimagename,';
+   $sql_query_string .= ' crypto_machine_record_visible = :cryptovisible';
+   return $sql_query_string;
+  }
+
   //Added update query for UC13
   public static function queryUpdateCryptoMachineDetails()
   {
    $sql_query_string  = 'UPDATE crypto_machine';
    $sql_query_string .= ' SET';
-   $sql_query_string .= ' crypto_machine_name = :cryptoname';
-   $sql_query_string .= ' crypto_machine_image_name = :cryptoimageName';
+   $sql_query_string .= ' crypto_machine_name = :cryptoname,';
+   $sql_query_string .= ' crypto_machine_image_name = :cryptoimagename,';
    $sql_query_string .= ' crypto_machine_record_visible = :cryptovisible';
    $sql_query_string .= ' WHERE crypto_machine_id = :cryptomachineid';
    return $sql_query_string;
   }
 
-  //Added delete query fro UC13
+  //Added delete query for UC13
   public static function queryDeleteCryptoMachineDetails()
   {
    $sql_query_string  = 'DELETE FROM crypto_machine';

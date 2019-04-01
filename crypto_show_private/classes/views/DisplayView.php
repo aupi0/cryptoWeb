@@ -72,6 +72,10 @@ NAMEERRORPAGE;
         $crypto_machine_id = $crypto_details['crypto_machine_id'];
         $user_id = $crypto_details['fk_user_id'];
         $crypto_image_name = $crypto_details['crypto_machine_image_name'];
+
+        $crypto_description = $crypto_details['crypto_description'];
+        var_dump($crypto_details);
+        $crypto_picture_source = PETPICS_PATH . $crypto_details['crypto_pic_source'];
         $this->html_page_content = <<< VIEWCRYPTODETAILS
 <div id="lg-form-container">
 <h2>Crypto Machine details for $crypto_name</h2>
@@ -80,6 +84,14 @@ NAMEERRORPAGE;
 <tr><td>Crypto Machine Name :</td><td>$crypto_name</td></tr>
 <tr><td>User ID :</td><td>$user_id</td></tr>
 <tr><td>Picture Name :</td><td>$crypto_image_name</td></tr>
+
+<tr><td>Comment :</td><td>$crypto_description</td></tr>
+<tr><td>Picture source :</td><td>$crypto_picture_source</td></tr>
+<tr><td>Machines's Picture :</td>
+<td>
+<img src="$crypto_picture_source" alt="machine's picture" title="machine's picture" />
+</td>
+</tr>
 </td>
 </tr>
 </table>

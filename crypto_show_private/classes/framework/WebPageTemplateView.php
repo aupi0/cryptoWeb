@@ -90,7 +90,9 @@ HTML;
     $menu_option_buttons .= '&nbsp;&nbsp;';
     $menu_option_buttons .= '<button name="feature" value="display_crypto_list">Display Crypto List</button>';
     $menu_option_buttons .= '&nbsp;&nbsp;';
-    $menu_option_buttons .= '<button name="feature" value="display_crypto_details">Display Crypto Details</button>';
+    $menu_option_buttons .= '<button name="feature" value="add_crypto_details">Add Crypto Details</button>';
+    $menu_option_buttons .= '&nbsp;&nbsp;';
+    $menu_option_buttons .= '<button name="feature" value="show_user_machines">Edit Crypto Details</button>';
    }
    else
    {
